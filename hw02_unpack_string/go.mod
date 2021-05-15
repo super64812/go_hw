@@ -1,4 +1,4 @@
-module github.com/super64812/hw02_unpack_string
+module github.com/super64812/go_hw/hw02_unpack_string
 
 go 1.16
 

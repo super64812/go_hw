@@ -25,32 +25,28 @@ func Unpack(str string) (string, error) {
 
 	for i, curr := range str {
 
-		//indicates the last iteration
+		// indicates the last iteration
 		lastIteration := len(str) == i+utf8.RuneLen(curr)
 
-		//string unpacking
+		// string unpacking
 		switch {
-
-		//repeat previous char {digit} times
+		// repeat previous char {digit} times
 		case unicode.IsDigit(curr) && unicode.IsLetter(prev):
 			digit, _ := strconv.Atoi(string(curr))
 			result.WriteString(strings.Repeat(string(prev), digit))
-
-		//write two last chars on last iteration
+		// write two last chars on last iteration
 		case unicode.IsLetter(curr) && unicode.IsLetter(prev) && lastIteration:
 			result.WriteRune(prev)
 			result.WriteRune(curr)
-
-		//write last char on last iteration
+		// write last char on last iteration
 		case unicode.IsLetter(curr) && lastIteration:
 			result.WriteRune(curr)
-
-		//write chars one by one
+		// write chars one by one
 		case unicode.IsLetter(prev):
 			result.WriteRune(prev)
 
 		default:
-			//no default options
+			// no default options
 		}
 		prev = curr
 	}

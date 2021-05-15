@@ -24,7 +24,6 @@ func Unpack(str string) (string, error) {
 	var prev rune
 
 	for i, curr := range str {
-
 		// indicates the last iteration
 		lastIteration := len(str) == i+utf8.RuneLen(curr)
 
